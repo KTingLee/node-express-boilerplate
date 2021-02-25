@@ -1,6 +1,16 @@
 const express = require('express');
+
+// NOTE: 這邊的中間層處理可以學一下
+// 把一些通用的中間層放在 middlewares 資料夾中
+// 例如最外層(app)中，錯誤處理會用到 error
+// 例如 route 層，用到的 Joi 驗證函數
+
 const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
+
+// NOTE: 這邊管理 Joi 驗證的方式可以學一下
+// 各個 route 的 Joi 驗證格式放在 validations 資料夾中
+
 const userValidation = require('../../validations/user.validation');
 const userController = require('../../controllers/user.controller');
 

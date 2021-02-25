@@ -50,6 +50,12 @@ if (config.env === 'production') {
   app.use('/v1/auth', authLimiter);
 }
 
+// NOTE: 這邊錯誤處理可以學一下
+// routes 丟出的錯誤的話，會略過 app.use((req, res, next )=> next(new ApiError(httpStatus.NOT_FOUND, 'Not found'))
+// 進到 errorConverter 做處理
+// 如果是不存在的 route，會進入 app.use((req, res, next )=> next(new ApiError(httpStatus.NOT_FOUND, 'Not found'))
+// 重點是，error 會在 errorConverter 做處理
+
 // v1 api routes
 app.use('/v1', routes);
 
